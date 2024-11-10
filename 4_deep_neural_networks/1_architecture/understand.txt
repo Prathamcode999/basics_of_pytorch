@@ -1,0 +1,16 @@
+deep neural networks are made by combining several perceptrons for complex classifiction where data are separated in spiral, etc
+
+probability of the weight of each perceptrons is taken and a hidden layer is made (multiple hidden layed can be made) then passes through activation function (sigmoid).
+architecture image is attached, refer to it.
+
+feedforward:
+feedforward refers to the process by which information moves through the layers of the network from the input layer to the output layer.
+ In a feedforward network, each neuron in a given layer is connected to neurons in the next layer but not to neurons in the same layer or previous layers.
+
+error calculation:
+done with mnist dataset example
+
+backpropogation:
+backpropagation is the algorithm used to minimize the loss function (like cross-entropy) by adjusting the network's weights.
+ This process is crucial in training the network, as it helps in learning patterns from the data by iteratively reducing the error.
+ 

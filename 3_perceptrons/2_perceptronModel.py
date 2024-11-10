@@ -27,6 +27,13 @@ class Model(nn.Module):
     def forward(self, x):
         predict = torch.sigmoid(self.linear(x)) #instead of normally creating linear, we are passing it through sigmoid function
         return predict
+    
+    def predict(self,x):
+        predict = self.forward(x)
+        if predict >= 0.5:
+            return 1
+        else:
+            return 0
 
 torch.manual_seed(1)
 model1 = Model(2,1)
@@ -86,3 +93,20 @@ b1 = model1.linear.bias[0].detach().numpy()
 # These are then used to plot the decision boundary after training.
 
 plot_fit('after training')
+
+#########################################
+#testing
+point1 = torch.tensor([1.0,-1.0])# we allot two random points for testing
+point2= torch.tensor([-1.0,1.0])
+def plotting_test():
+    plt.plot(point1.numpy()[0], point1.numpy()[1], 'ro')
+    plt.plot(point2.numpy()[0], point2.numpy()[1], 'ko')
+    plot_fit("after testing")
+
+plotting_test()
+
+print("red point positive probability = {}".format(model1.forward(point1).item()))
+print("black point positive probability = {}".format(model1.forward(point2).item())) # return the probabilty of the points
+
+print("red point in class = {}".format(model1.predict(point1)))
+print("black point in class = {}".format(model1.predict(point2)))# return in which class they belong, predict is initalized in model class
